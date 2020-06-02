@@ -1,23 +1,29 @@
-//Create a react app from scratch.
-//It should display 2 paragraph HTML elements.
-//The paragraphs should say:
-//Created by YOURNAME.
-//Copyright CURRENTYEAR.
-//E.g.
-//Created by Angela Yu.
-//Copyright 2019.
-
 import React from "react";
 import ReactDOM from "react-dom";
 
-const yourName = "Haridharan";
-var today = new Date();
-var currentYear = today.getFullYear();
-
 ReactDOM.render(
   <div>
-    <p>Created by {yourName}.</p>
-    <p>Copyright {currentYear}.</p>
+    <h1 className="heading">My Favourite Foods</h1>
+    <ul>
+      <li>Bacon</li>
+      <img
+        className="food-img"
+        alt="bacon"
+        src="https://storage.googleapis.com/gen-atmedia/3/2010/02/55cc6ae010585eb7933c5f96dea94f637330cff4.jpeg"
+      />
+      <li>Jamon</li>
+      <img
+        className="food-img"
+        alt="jamon"
+        src="https://www.otiendas.com/wp-content/uploads/2017/10/Jamon-serrano.jpg"
+      />
+      <li>Noodles</li>
+      <img
+        className="food-img"
+        alt="noodles"
+        src="https://www.seriouseats.com/recipes/images/2015/05/20150424-singapore-noodles-shao-zhong-20-1500x1125.jpg"
+      />
+    </ul>
   </div>,
   document.getElementById("root")
 );
