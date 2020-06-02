@@ -1,18 +1,23 @@
+//Create a react app from scratch.
+//It should display 2 paragraph HTML elements.
+//The paragraphs should say:
+//Created by YOURNAME.
+//Copyright CURRENTYEAR.
+//E.g.
+//Created by Angela Yu.
+//Copyright 2019.
+
 import React from "react";
 import ReactDOM from "react-dom";
 
-const fName = "Hari";
-const lName = "Dharan";
-const luckyNum = 17;
+const yourName = "Haridharan";
+var today = new Date();
+var currentYear = today.getFullYear();
 
 ReactDOM.render(
   <div>
-    <h1>
-      Hello {fName} {lName}!
-    </h1>
-    <h1>Hello {fName + " " + lName}!</h1>
-    <p>Your lucky number is {luckyNum}</p>
-    <p>Your random number is {Math.floor(Math.random() * 10)}</p>
+    <p>Created by {yourName}.</p>
+    <p>Copyright {currentYear}.</p>
   </div>,
   document.getElementById("root")
 );
