@@ -1,14 +1,14 @@
 import React from "react";
-import Contacts from "./Contacts";
+import contacts from "../contacts";
 import Card from "./Card";
 
 function App() {
   return (
     <div>
       <h1>My Contacts</h1>
-      <Card {...Contacts[0]} />
-      <Card {...Contacts[1]} />
-      <Card {...Contacts[2]} />
+      <Card {...contacts[0]} />
+      <Card {...contacts[1]} />
+      <Card {...contacts[2]} />
     </div>
   );
 }
