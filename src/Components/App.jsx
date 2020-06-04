@@ -1,15 +1,15 @@
 import React from "react";
-import contacts from "../contacts";
-import Card from "./Card";
+import Entry from "./Entry";
+import emojipedia from "../emojipedia";
 
-function createCard(contact) {
+function createEntry(entry) {
   return (
-    <Card
-      key={contact.id}
-      name={contact.name}
-      imgURL={contact.imgURL}
-      phone={contact.phone}
-      email={contact.email}
+    <Entry
+      key={entry.id}
+      id={entry.id}
+      emoji={entry.emoji}
+      name={entry.name}
+      meaning={entry.meaning}
     />
   );
 }
@@ -17,8 +17,10 @@ function createCard(contact) {
 function App() {
   return (
     <div>
-      <h1>My Contacts</h1>
-      {contacts.map(createCard)}
+      <h1>
+        <span>emojipedia</span>
+      </h1>
+      <dl className="dictionary"> {emojipedia.map(createEntry)} </dl>
     </div>
   );
 }
