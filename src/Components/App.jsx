@@ -6,9 +6,7 @@ var isLoggedIn = false;
 
 const currentTime = new Date().getHours();
 function App() {
-  return (
-    <div className="container">{currentTime > 12 ? <h1>Hello</h1> : null}</div>
-  );
+  return <div className="container">{currentTime > 12 && <h1>Hello</h1>}</div>;
 }
 
 export default App;
