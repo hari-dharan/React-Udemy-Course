@@ -1,26 +1,19 @@
+// {}
 import React from "react";
-import Entry from "./Entry";
-import emojipedia from "../emojipedia";
+import Login from "./Login";
+
+var isLoggedIn = false;
+
+function renderConditionally() {
+  if (isLoggedIn) {
+    return <h1>Hello</h1>;
+  } else {
+    return <Login />;
+  }
+}
 
 function App() {
-  return (
-    <div>
-      <h1>
-        <span>emojipedia</span>
-      </h1>
-      <dl className="dictionary">
-        {emojipedia.map(entry => (
-          <Entry
-            key={entry.id}
-            id={entry.id}
-            emoji={entry.emoji}
-            name={entry.name}
-            meaning={entry.meaning}
-          />
-        ))}
-      </dl>
-    </div>
-  );
+  return <div className="container">{renderConditionally()}</div>;
 }
 
 export default App;
