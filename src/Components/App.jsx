@@ -6,8 +6,9 @@ function App() {
   const [isMousedOver, setButtonColor] = useState(false);
   const [name, setName] = useState("");
 
-  function handleClick() {
+  function handleClick(event) {
     setHeading(name);
+    event.preventDefault();
   }
 
   function handleMouseOver() {
@@ -25,20 +26,23 @@ function App() {
   return (
     <div className="container">
       <h1>Hello {heading}</h1>
-      <input
-        onChange={handleChange}
-        type="text"
-        placeholder="What's your name?"
-        value={name}
-      />
-      <button
-        style={{ backgroundColor: isMousedOver ? "black" : "white" }}
-        onClick={handleClick}
-        onMouseOver={handleMouseOver}
-        onMouseOut={handleMouseOut}
-      >
-        Submit
-      </button>
+      <form onSubmit={handleClick}>
+        <input
+          onChange={handleChange}
+          type="text"
+          placeholder="What's your name?"
+          value={name}
+        />
+        <button
+          type="submit"
+          style={{ backgroundColor: isMousedOver ? "black" : "white" }}
+          onClick={handleClick}
+          onMouseOver={handleMouseOver}
+          onMouseOut={handleMouseOut}
+        >
+          Submit
+        </button>
+      </form>
     </div>
   );
 }
