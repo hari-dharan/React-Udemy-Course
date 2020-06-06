@@ -10,19 +10,9 @@ function App() {
   function handleChange(event) {
     const { value, name } = event.target;
 
-    setFullName(prevValue => {
-      if (name === "fName") {
-        return {
-          fName: value,
-          lName: prevValue.lName
-        };
-      } else if (name === "lName") {
-        return {
-          fName: prevValue.fName,
-          lName: value
-        };
-      }
-    });
+    name === "fName"
+      ? setFullName({ fName: value, lName: fullName.lName })
+      : setFullName({ fName: fullName.fName, lName: value });
   }
 
   return (
