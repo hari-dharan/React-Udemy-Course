@@ -2,18 +2,33 @@
 import React, { useState } from "react";
 
 function App() {
-  setInterval(getTime, 1000);
-  const today = new Date().toLocaleTimeString();
-  const [state, setState] = useState(today);
+  const [heading, setHeading] = useState("Hello");
+  const [isMousedOver, setButtonColor] = useState(false);
 
-  function getTime() {
-    const newToday = new Date().toLocaleTimeString();
-    setState(newToday);
+  function handleClick() {
+    setHeading("Submitted");
   }
+
+  function handleMouseOver() {
+    setButtonColor(true);
+  }
+
+  function handleMouseOut() {
+    setButtonColor(false);
+  }
+
   return (
     <div className="container">
-      <h1>{state}</h1>
-      <button onClick={getTime}>Get Time</button>
+      <h1>{heading}</h1>
+      <input type="text" placeholder="What's your name?" />
+      <button
+        style={{ backgroundColor: isMousedOver ? "black" : "white" }}
+        onClick={handleClick}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
+      >
+        Submit
+      </button>
     </div>
   );
 }
