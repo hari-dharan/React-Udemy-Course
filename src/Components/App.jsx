@@ -4,9 +4,10 @@ import React, { useState } from "react";
 function App() {
   const [heading, setHeading] = useState("Hello");
   const [isMousedOver, setButtonColor] = useState(false);
+  const [name, setName] = useState("");
 
   function handleClick() {
-    setHeading("Submitted");
+    setHeading("Successful Submit");
   }
 
   function handleMouseOver() {
@@ -17,10 +18,21 @@ function App() {
     setButtonColor(false);
   }
 
+  function handleChange(event) {
+    setName(event.target.value);
+  }
+
   return (
     <div className="container">
-      <h1>{heading}</h1>
-      <input type="text" placeholder="What's your name?" />
+      <h1>
+        {heading} {name}
+      </h1>
+      <input
+        onChange={handleChange}
+        type="text"
+        placeholder="What's your name?"
+        value={name}
+      />
       <button
         style={{ backgroundColor: isMousedOver ? "black" : "white" }}
         onClick={handleClick}
