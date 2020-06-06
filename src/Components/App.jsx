@@ -2,46 +2,38 @@
 import React, { useState } from "react";
 
 function App() {
-  const [heading, setHeading] = useState("");
-  const [isMousedOver, setButtonColor] = useState(false);
-  const [name, setName] = useState("");
+  const [fName, setFirstName] = useState("");
+  const [lName, setLastName] = useState("");
 
-  function handleClick(event) {
-    setHeading(name);
-    event.preventDefault();
+  function updateFName(event) {
+    const firstName = event.target.value;
+    setFirstName(firstName);
   }
 
-  function handleMouseOver() {
-    setButtonColor(true);
-  }
-
-  function handleMouseOut() {
-    setButtonColor(false);
-  }
-
-  function handleChange(event) {
-    setName(event.target.value);
+  function updateLName(event) {
+    const lastName = event.target.value;
+    setLastName(lastName);
   }
 
   return (
     <div className="container">
-      <h1>Hello {heading}</h1>
-      <form onSubmit={handleClick}>
+      <h1>
+        Hello {fName} {lName}
+      </h1>
+      <form>
         <input
-          onChange={handleChange}
-          type="text"
-          placeholder="What's your name?"
-          value={name}
+          onChange={updateFName}
+          name="fName"
+          placeholder="First Name"
+          value={fName}
         />
-        <button
-          type="submit"
-          style={{ backgroundColor: isMousedOver ? "black" : "white" }}
-          onClick={handleClick}
-          onMouseOver={handleMouseOver}
-          onMouseOut={handleMouseOut}
-        >
-          Submit
-        </button>
+        <input
+          onChange={updateLName}
+          name="lName"
+          placeholder="Last Name"
+          value={lName}
+        />
+        <button>Submit</button>
       </form>
     </div>
   );
