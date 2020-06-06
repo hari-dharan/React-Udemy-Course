@@ -2,12 +2,12 @@
 import React, { useState } from "react";
 
 function App() {
-  const [heading, setHeading] = useState("Hello");
+  const [heading, setHeading] = useState("");
   const [isMousedOver, setButtonColor] = useState(false);
   const [name, setName] = useState("");
 
   function handleClick() {
-    setHeading("Successful Submit");
+    setHeading(name);
   }
 
   function handleMouseOver() {
@@ -24,9 +24,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>
-        {heading} {name}
-      </h1>
+      <h1>Hello {heading}</h1>
       <input
         onChange={handleChange}
         type="text"
