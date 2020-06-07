@@ -1,19 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 
 function ToDoItem(props) {
-  const [isClicked, setClicked] = useState(false);
-
-  function handleClick() {
-    isClicked ? setClicked(false) : setClicked(true);
-  }
-
   return (
-    <li
-      onClick={handleClick}
-      style={{ textDecoration: isClicked ? "line-through" : "none" }}
+    <div
+      onClick={() => {
+        // This is so that the onChecked method is only called when it is onClicked first
+        props.onChecked(props.id);
+      }}
     >
-      {props.item}
-    </li>
+      <li>{props.item}</li>;
+    </div>
   );
 }
 

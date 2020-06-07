@@ -18,6 +18,14 @@ function App() {
     setItem("");
   }
 
+  function deleteItem(id) {
+    setItemList(lastValue => {
+      return lastValue.filter((item, index) => {
+        return index !== id;
+      });
+    });
+  }
+
   return (
     <div className="container">
       <div className="heading">
@@ -31,8 +39,13 @@ function App() {
       </div>
       <div>
         <ul>
-          {itemList.map(item => (
-            <ToDoItem item={item} />
+          {itemList.map((item, index) => (
+            <ToDoItem
+              key={index}
+              id={index}
+              item={item}
+              onChecked={deleteItem}
+            />
           ))}
         </ul>
       </div>
