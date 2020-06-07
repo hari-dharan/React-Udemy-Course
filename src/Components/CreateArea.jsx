@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import AddBoxIcon from "@material-ui/icons/AddBox";
 
 function CreateArea(props) {
   const [note, setNote] = useState({
     title: "",
     content: ""
   });
+
+  const [isExpanded, setExpanded] = useState(false);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -25,23 +28,33 @@ function CreateArea(props) {
     event.preventDefault();
   }
 
+  function expand() {
+    setExpanded(true);
+  }
+
   return (
     <div>
-      <form>
-        <input
-          onChange={handleChange}
-          name="title"
-          placeholder="Title"
-          value={note.title}
-        />
+      <form className="create-note">
+        {isExpanded ? (
+          <input
+            onChange={handleChange}
+            name="title"
+            placeholder="Title"
+            value={note.title}
+          />
+        ) : null}
+
         <textarea
+          onClick={expand}
           onChange={handleChange}
           name="content"
           placeholder="Take a note..."
-          rows="3"
+          rows={isExpanded ? 3 : 1}
           value={note.content}
         />
-        <button onClick={submitNote}>Add</button>
+        <button onClick={submitNote}>
+          <AddBoxIcon />
+        </button>
       </form>
     </div>
   );
