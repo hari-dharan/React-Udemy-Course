@@ -2,50 +2,39 @@
 import React, { useState } from "react";
 
 function App() {
-  const [contact, setContact] = useState({
-    fName: "",
-    lName: "",
-    email: ""
-  });
+  const [item, setItem] = useState("");
+  const [itemList, setItemList] = useState([]);
 
   function handleChange(event) {
-    const { value, name } = event.target;
+    const newItem = event.target.value;
+    setItem(newItem);
+  }
 
-    setContact(lastValue => {
-      return {
-        ...lastValue,
-        [name]: value
-      };
+  function handleClick() {
+    setItemList(lastValue => {
+      return [...lastValue, item];
     });
+    setItem("");
   }
 
   return (
     <div className="container">
-      <h1>
-        Hello {contact.fName} {contact.lName}
-      </h1>
-      <p>{contact.email}</p>
-      <form>
-        <input
-          onChange={handleChange}
-          name="fName"
-          placeholder="First Name"
-          value={contact.fName}
-        />
-        <input
-          onChange={handleChange}
-          name="lName"
-          placeholder="Last Name"
-          value={contact.lName}
-        />
-        <input
-          onChange={handleChange}
-          name="email"
-          placeholder="Email"
-          value={contact.email}
-        />
-        <button>Submit</button>
-      </form>
+      <div className="heading">
+        <h1>To-Do List</h1>
+      </div>
+      <div className="form">
+        <input onChange={handleChange} type="text" value={item} />
+        <button onClick={handleClick}>
+          <span>Add</span>
+        </button>
+      </div>
+      <div>
+        <ul>
+          {itemList.map(item => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
